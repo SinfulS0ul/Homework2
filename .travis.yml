@@ -5,6 +5,16 @@ node_js:
 node_js:
   - "stable"
 
+env:
+  global:
+    secure: "TF4sS7ohwuALRr3C1palrzKSXvQco9oJ80VXbMxTxXsex7nDMFl3aVM7sfkwzWquimMRiYqHXwBDDNDXNgzBm0QvAUtW/HHPNO6z96hwSruzLtyB05slOIyJWq/rzeGh2Y41wZz4wcniefAAmKcJv+maNgyYA+dlSotPzhbaGK1R44ErXcHq7x6CuuVAMyUkAe/HrthUlT246P3wdJLknOUXblpaFGff6n8FLc458fBfoVK6wSF7OKf8EbSKfIbPHZ0sVwbkV1adf1ArBVN4xujzAibe9LkjuOSGHAUjplyXLn5ZKApiRquG0+oxkSDQNyTWDf2iuv86wYG3vrE/6ww0Fbtg3opqC4DOA4mOvhGzo3xavAdfUlMTuXw/z8z0TqEPd1ZZjWjOPtC43WlL7hk3tFn+DsOLa0fKBNPzGX9Y+s6qWEwUsFoRyoDPQ2M8lre8nHDJbi+lg1iBJ2Oxy0vBSOSvGhe+GcbWCZUuls5pIBAI98hGviwXZ6A5uPObafEdxq1VHe8b8upL496XKUZ8jYCkjBIzzXKtpKY60vwM15qZcUDxrmkLgH3xFU9h1jFdhdbkn/Im21D6l+aA3Ch4yDswlvMkcHVU93Eh6OXsZh8nNEqON4wfbf9VN5pRbhg4UEtnxWiXYy/8o6WhizMdMuuAOpodypznlaxo5zk="
+
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+  
+install:
+  - npm i
+
 cache:
   directories:
   - node_modules
