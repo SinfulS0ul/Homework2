@@ -9,11 +9,11 @@ class App extends Component {
     tasks: [],
     taskText: { text: '', date: '', done: false },
     doneTasks: false,
-    undoneTasks: false
+    undoneTasks: false,
+    sortByDate: 'byLastDate'
   }
 
   textInput = React.createRef();
-  doneTasks = React.createRef();
 
   addTask = e => {
     e.preventDefault();
@@ -32,8 +32,11 @@ class App extends Component {
 
   handleInputChange = e => {
     const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : { text: target.value, date: Date.now(), done: false };
+    const value = target.type === 'checkbox'? target.checked
+                   : target.type === 'radio'? target.value 
+                   : { text: target.value, date: Date.now(), done: false };
     const name = target.name;
+    console.log(value)
     this.setState({
         [name]: value
     });
@@ -41,7 +44,7 @@ class App extends Component {
 
   checkLikeDone = key => {
     const newTasks = this.state.tasks
-      .map(task => task.date !== key? task : {text: task.text, date: task.date, done: true});
+      .map(task => task.date !== key? task : {text: task.text, date: task.date, done: !task.done});
     this.setState({tasks: newTasks});
     console.log(newTasks)
   }
@@ -53,11 +56,13 @@ class App extends Component {
           addTask={this.addTask} 
           textInput={this.textInput}
           handleInputChange={this.handleInputChange}
+          sortByDate={this.state.sortByDate}
         />
         <Tasks 
           entries={this.state.tasks} 
           doneTasks={this.state.doneTasks}
           undoneTasks={this.state.undoneTasks}
+          sortByDate={this.state.sortByDate}
           deleteTask={this.deleteTask}
           checkLikeDone={this.checkLikeDone}
         />

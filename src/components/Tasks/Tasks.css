@@ -1,0 +1,16 @@
+.done {
+  text-decoration: line-through
+}
+
+.element{
+  display: block;
+}
+
+.close {
+  cursor: pointer;
+  width: 4%;
+}
+
+.close:hover {
+  background: #bbb;
+}

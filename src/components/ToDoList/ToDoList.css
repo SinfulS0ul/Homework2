@@ -1,0 +1,9 @@
+input[type="checkbox"], [type="radio"]{
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+form{
+  font-size: 20px;
+}
