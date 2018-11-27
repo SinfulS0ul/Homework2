@@ -17,7 +17,8 @@ class Tasks extends Component{
           className="list-group-item list-group-item-action justify-content-between align-items-center btn"
         ><span
           className={task.done? 'done' : 'undone'}
-        >{task.text}</span>
+        >{task.text} - {`${task.dateToDo.getMonth()}/${task.dateToDo.getDate()}/${task.dateToDo.getFullYear()} ${task.dateToDo.getHours()}:${task.dateToDo.getMinutes()}`}
+        </span>
         </button>
         </span>
         <button 

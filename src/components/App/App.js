@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Datapicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 import ToDoList from '../ToDoList'
 import Tasks from '../Tasks';
-
+import DatePicker from "react-datepicker";
+ 
 class App extends Component {
   
   state = {
     tasks: [],
     taskText: { text: '', date: '', done: false },
+    dateToDo: new Date(),
+    highlightedDates: [],
     doneTasks: false,
     undoneTasks: false,
     sortByDate: 'byLastDate'
   }
-
+  
   textInput = React.createRef();
 
   addTask = e => {
     e.preventDefault();
-    const newTask = this.state.taskText;
+    const newTask = {text: this.state.taskText.text, date: this.state.taskText.date, done: this.state.taskText.done, dateToDo: this.state.dateToDo};
+    const newDateToDo = this.state.dateToDo;
     if(newTask.text !== ''){
       this.setState({tasks: [...this.state.tasks, newTask],
-                     taskText: {text: '', date: '', done: false}});
+                     taskText: {text: '', date: '', done: false},
+                     highlightedDates: [...this.state.highlightedDates, newDateToDo]});
     }
   }
 
@@ -42,9 +49,14 @@ class App extends Component {
     });
   }
 
+  handleDateChange = date => {
+    this.setState({dateToDo: date});
+    console.log(this.state.dateToDo);
+  }
+
   checkLikeDone = key => {
     const newTasks = this.state.tasks
-      .map(task => task.date !== key? task : {text: task.text, date: task.date, done: !task.done});
+      .map(task => task.date !== key? task : {text: task.text, date: task.date, done: !task.done, dateToDo: task.dateToDo});
     this.setState({tasks: newTasks});
     console.log(newTasks)
   }
@@ -52,6 +64,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <DatePicker
+          selected={this.state.dateToDo}
+          onChange={this.handleDateChange}
+          highlightDates={this.state.highlightedDates}
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
+          dateFormat="MMMM d, yyyy h:mm aa"
+          timeCaption="time"
+        />
         <ToDoList 
           addTask={this.addTask} 
           textInput={this.textInput}

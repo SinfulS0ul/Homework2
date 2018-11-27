@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import './ToDoList.css';
 
 class ToDoList extends Component {
@@ -23,10 +24,11 @@ class ToDoList extends Component {
             ref={this.props.textInput}
             onChange={this.props.handleInputChange}
           />
-          <button 
+          <Button
             type="submit" 
-            className="w-100 btn btn-success"
-          > Додати </button>
+            className="w-100"
+            bsStyle="success"
+          > Додати </Button>
           <div
             className="d-flex flex-row"
           >
