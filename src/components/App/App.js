@@ -43,7 +43,6 @@ class App extends Component {
                    : target.type === 'radio'? target.value 
                    : { text: target.value, date: Date.now(), done: false };
     const name = target.name;
-    console.log(value)
     this.setState({
         [name]: value
     });
@@ -51,14 +50,12 @@ class App extends Component {
 
   handleDateChange = date => {
     this.setState({dateToDo: date});
-    console.log(this.state.dateToDo);
   }
 
   checkLikeDone = key => {
     const newTasks = this.state.tasks
       .map(task => task.date !== key? task : {text: task.text, date: task.date, done: !task.done, dateToDo: task.dateToDo});
     this.setState({tasks: newTasks});
-    console.log(newTasks)
   }
 
   render() {
