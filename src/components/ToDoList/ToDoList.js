@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
+import { CustomInput } from 'reactstrap';
 import './ToDoList.css';
 
 class ToDoList extends Component {
@@ -35,34 +36,42 @@ class ToDoList extends Component {
           <div
            className="d-flex flex-column p-2 flex-fill"
           >
-          <label>Виконані задачі<input 
+          <CustomInput 
             name="doneTasks"
             type="checkbox" 
+            id="exampleCustomCheckbox1" 
+            label="Виконані задачі" 
             onChange={this.props.handleInputChange}
-          /></label>
-          <label>Невиконані задачі<input 
+          />
+          <CustomInput 
             name="undoneTasks"
             type="checkbox" 
+            id="exampleCustomCheckbox2" 
+            label="Невиконані задачі" 
             onChange={this.props.handleInputChange}
-          /></label>
+          />
           </div>
           <div
            className="d-flex flex-column p-2 flex-fill"
           >
-          <label>Пріорітет за останньою<input 
+          <CustomInput 
             name="sortByDate"
-            type="radio" 
             value="byLastDate"
             onChange={this.props.handleInputChange}
             checked={this.props.sortByDate === 'byLastDate'}
-          /></label>
-          <label>Пріорітет за першою<input 
-            name="sortByDate"
             type="radio" 
+            id="exampleCustomRadio1" 
+            label="Пріорітет за останньою" 
+          />
+          <CustomInput 
+            name="sortByDate"
             value="byFirstDate"
             onChange={this.props.handleInputChange}
             checked={this.props.sortByDate === 'byFirstDate'}
-          /></label>
+            type="radio" 
+            id="exampleCustomRadio2" 
+            label="Пріорітет за першою" 
+          />
           </div>
           </div>
         </form>
